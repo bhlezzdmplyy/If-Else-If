@@ -1,0 +1,29 @@
+const readline = require('readline');
+
+// Create interface for input
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+// Function to get the grade based on score
+function getGrade(score) {
+    if (score >= 90) {
+        return "Excellent";
+    } else if (score >= 80 && score <= 89) {
+        return "Good";
+    } else if (score >= 70 && score <= 79) {
+        return "Fair";
+    } else if (score < 70) {
+        return "Needs Improvement";
+    } else {
+        return "Invalid score entered.";
+    }
+}
+
+// Prompt the user for their score
+rl.question("Enter your score: ", (input) => {
+    const score = Number(input);
+    console.log(`Your grade is: ${getGrade(score)}.`);
+    rl.close();
+});
